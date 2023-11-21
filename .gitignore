@@ -1,0 +1,9 @@
+.devbox
+_devbox.json
+devbox.json
+devbox.lock
+build
+CMakeUserPresets.json
+.vscode
+test/rand500
+.clang-format.alt
