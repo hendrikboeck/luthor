@@ -13,16 +13,19 @@ using json = object::json;
 object::object() noexcept
     : parseable_i(),
       m_flags(0),
-      m_items(),
+      m_items(hashmap<std::string, std::unique_ptr<parseable_i>>()),
       m_catchall(nullptr) { }
 
 object::object(const object& other) noexcept
     : parseable_i(),
       m_flags(other.m_flags),
-      m_items(),
-      m_catchall(other.m_catchall->copy_unique()) {
+      m_items(hashmap<std::string, std::unique_ptr<parseable_i>>()),
+      m_catchall(nullptr) {
+  if (other.m_catchall != nullptr)
+    m_catchall = other.m_catchall->copy_unique();
+
   for (auto& kv : other.m_items)
-    m_items.insert({ kv.first, kv.second->copy_unique() });
+    m_items.insert(std::make_pair(kv.first, kv.second->copy_unique()));
 }
 
 object::object(object&& other) noexcept

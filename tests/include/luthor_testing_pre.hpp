@@ -17,6 +17,13 @@
   REQUIRE_NOTHROW(pointer = validator.find_and_parse(object, literal));        \
   REQUIRE(pointer == &object[literal]);
 
+#define PASSING_CUSTOM(object, literal)                                        \
+  REQUIRE_NOTHROW(validator.parse_safe(object[literal]).is_ok());              \
+  REQUIRE_NOTHROW(pointer = validator.parse(object[literal]));                 \
+  REQUIRE(pointer == &object[literal]);                                        \
+  REQUIRE_NOTHROW(pointer = validator.find_and_parse(object, literal));        \
+  REQUIRE(pointer == &object[literal]);
+
 #define PASSING_NULL(literal)                                                  \
   REQUIRE_NOTHROW(pointer = validator.find_and_parse(object, literal));        \
   REQUIRE(pointer == nullptr);

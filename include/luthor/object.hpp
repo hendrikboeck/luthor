@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <tuple>
 #include <unordered_map>
 // #include <boost/unordered_map.hpp>
 
@@ -34,12 +36,12 @@ public:
   // note: myb add functions deep_omit(...) instead
   object omit(const std::vector<std::string>& keys) const;
 
-  inline object& item(std::string key, parseable_i& item) noexcept {
+  inline object& item(const std::string& key, parseable_i& item) noexcept {
     m_items.insert_or_assign(key, item.into_unique());
     return *this;
   }
 
-  inline object& item(std::string key, parseable_i&& item) noexcept {
+  inline object& item(const std::string& key, parseable_i&& item) noexcept {
     m_items.insert_or_assign(key, item.into_unique());
     return *this;
   }

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
 
 # set(CMAKE_C_COMPILER gcc)
 # set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
@@ -98,6 +99,7 @@ add_executable(${PROJECT_NAME}_test
   tests/src/any.cpp
   tests/src/boolean.cpp
   tests/src/never.cpp
+  tests/src/object.cpp
 )
 add_dependencies(${PROJECT_NAME}_test
   Catch2::Catch2WithMain

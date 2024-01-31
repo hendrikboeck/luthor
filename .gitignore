@@ -7,3 +7,5 @@ CMakeUserPresets.json
 .vscode
 test/rand500
 .clang-format.alt
+compile_commands.json
+.cache

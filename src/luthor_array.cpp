@@ -20,7 +20,7 @@ array::array() noexcept
 array::array(const array& other) noexcept
     : parseable_i(),
       m_flags(other.m_flags),
-      m_element(other.m_element->copy_unique()),
+      m_element(other.m_element ? other.m_element->copy_unique() : nullptr),
       m_ll(other.m_ll),
       m_ul(other.m_ul) { }
 
